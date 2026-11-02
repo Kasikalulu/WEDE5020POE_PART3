@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO TAGS START HERE -->
+    <title>League Table & Fixtures | Mabopane Local Football Association</title>
+    <meta name="description" content="View the latest Mabopane LFA league standings, points, and upcoming fixtures. Stay updated with your favourite local football teams.">
+    <meta name="keywords" content="Mabopane league table, football fixtures, soccer standings, MABLFA results">
+    <!-- SEO TAGS END HERE -->
+
+    <!-- EXTERNAL CSS -->
+    <link href="css/Style.css" rel="stylesheet" type="text/css"/>
+
+    <!-- EMBEDDED CSS - page-specific styles -->
+    <style>
+
+        /* ===== PAGE HEADING ===== */
+        .page-heading {
+            text-align: center;
+            padding: 60px 20px 20px;
+        }
+
+        .page-heading h1 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 2.5rem;
+            color: #ffffff;
+            letter-spacing: 3px;
+            font-weight: normal;
+            margin-bottom: 15px;
+        }
+
+        .heading-line {
+            display: inline-block;
+            width: 80px;
+            height: 2px;
+            background-color: #c9a961;
+        }
+
+        /* ===== TWO-COLUMN WRAPPER ===== */
+        /* Uses float: left for side-by-side columns           */
+        /* REFERENCE: Week 6, Slide 20 (Float)                 */
+        /* REFERENCE: Week 7, Slide 14 (Widths in percentages) */
+        .two-column {
+            padding: 30px 40px 60px;
+            overflow: hidden;   /* Contains floated children - Week 6, Slide 22 */
+        }
+
+        /* LEFT COLUMN - FIXTURES */
+        .column-left {
+            float: left;                        /* REFERENCE: Week 6, Slide 20 */
+            width: 48%;                         /* REFERENCE: Week 7, Slide 14 */
+            margin-right: 4%;                   /* Gap between columns - Week 6, Slide 17 */
+        }
+
+        /* RIGHT COLUMN - LEAGUE TABLE */
+        .column-right {
+            float: left;                        /* REFERENCE: Week 6, Slide 20 */
+            width: 48%;                         /* REFERENCE: Week 7, Slide 14 */
+        }
+
+        /* ===== SECTION HEADINGS ===== */
+        .section-heading {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 1.5rem;
+            color: #c9a961;
+            letter-spacing: 2px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: normal;
+            border-bottom: 2px solid #c9a961;
+            padding-bottom: 10px;
+        }
+
+        /* ===== FIXTURES LIST ===== */
+        .fixtures-list {
+            list-style: none;                   /* Removes bullets - Week 6, Slide 16 */
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Each fixture row */
+        .fixture-item {
+            background-color: #1a1a1a;
+            border-left: 3px solid #c9a961;    /* Gold accent - Week 6, Slide 24 */
+            padding: 14px 18px;
+            margin-bottom: 10px;
+            border-radius: 4px;                 /* REFERENCE: Week 6, Slide 25 */
+        }
+
+        /* Date line */
+        .fixture-date {
+            color: #c9a961;
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        /* Teams line */
+        .fixture-teams {
+            color: #ffffff;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        /* Venue/time line */
+        .fixture-meta {
+            color: #999999;
+            font-size: 0.8rem;
+        }
+
+        /* ===== LEAGUE TABLE ===== */
+        .league-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        /* Table header */
+        .league-table thead th {
+            background-color: #0a0a0a;
+            color: #c9a961;
+            padding: 12px 8px;
+            text-align: left;
+            font-size: 0.75rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #c9a961;
+            text-transform: uppercase;
+        }
+
+        /* Centre-align numeric columns */
+        .league-table th.center,
+        .league-table td.center {
+            text-align: center;
+        }
+
+        /* Table body cells */
+        .league-table tbody td {
+            color: #cccccc;
+            padding: 10px 8px;
+            font-size: 0.85rem;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        /* Remove border on last row */
+        .league-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Alternate row shading */
+        .league-table tbody tr:nth-child(even) {
+            background-color: #161616;
+        }
+
+        /* Hover highlight */
+        /* REFERENCE: Week 6, Slide 29 (hover pseudo-class) */
+        .league-table tbody tr:hover {
+            background-color: #222222;
+        }
+
+        /* Position column */
+        .league-table tbody td.position {
+            color: #c9a961;
+            font-weight: bold;
+            text-align: center;
+            width: 35px;
+        }
+
+        /* Team name column */
+        .league-table tbody td.team-name {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        /* Points column */
+        .league-table tbody td.points {
+            color: #ffffff;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* ===== TABLET RESPONSIVE ===== */
+        /* REFERENCE: Week 7, Slide 12 (Media Query) */
+        @media only screen and (max-width: 960px) {
+            .page-heading h1 { font-size: 2rem; }
+
+            /* Columns stack vertically on tablet */
+            .column-left,
+            .column-right {
+                width: 100%;                    /* Full width - REFERENCE: Week 7, Slide 3 */
+                margin-right: 0;
+                margin-bottom: 30px;
+            }
+
+            .two-column { padding: 20px 20px 40px; }
+        }
+
+        /* ===== MOBILE RESPONSIVE ===== */
+        /* REFERENCE: Week 7, Slide 3 */
+        @media only screen and (max-width: 480px) {
+            .page-heading h1 { font-size: 1.5rem; }
+            .two-column { padding: 15px 10px 30px; }
+            .section-heading { font-size: 1.2rem; }
+            .league-table thead th { padding: 8px 4px; font-size: 0.65rem; }
+            .league-table tbody td { padding: 8px 4px; font-size: 0.75rem; }
+            .fixture-item { padding: 12px 14px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- ===================================================== -->
+        <!-- HEADER - Same as every other page                     -->
+        <!-- ===================================================== -->
+        
+
+       <header>
+    <div class="logo-area">
+        <img src="images/Logo.png" alt="Mabopane LFA Crown Logo" class="main-logo">
+        <h1 class="site-name">Mabopane</h1>
+        <div class="lfa-divider">
+            <span class="line"></span>
+            <span class="lfa-text">L F A</span>
+            <span class="line"></span>
+        </div>
+    </div>
+
+    <div class="nav-row">
+        <nav>
+            <ul>
+                <!-- Remember to change the class="currentPage" on each page! -->
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="gallery.html">GALLERY</a></li>
+                <li><a href="about.html">ABOUT US</a></li>
+                <li><a href="leaguetable.html">LOG TABLE & FIXTURES</a></li>
+                <li><a href="history.html">HISTORY</a></li>
+                <li><a href="enquiry.html">ENQUIRY</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+        
+       
+    </div>
+</header>
+        
+
+        <!-- ===================================================== -->
+        <!-- MAIN CONTENT                                          -->
+        <!-- ===================================================== -->
+        <main>
+
+            <!-- Page heading -->
+            <section class="page-heading">
+                <h1>LEAGUE</h1>
+                <div class="heading-line"></div>
+            </section>
+
+            <!-- Two-column layout: Fixtures LEFT, League Table RIGHT -->
+            <section class="two-column">
+
+                <!-- ============================================ -->
+                <!-- LEFT COLUMN - FIXTURES                        -->
+                <!-- ============================================ -->
+                <div class="column-left">
+
+                    <h2 class="section-heading">FIXTURES</h2>
+
+                    <ul class="fixtures-list">
+
+                        <!-- ===== FIXTURE 1 - EDIT THIS ===== -->
+                        <li class="fixture-item">
+                            <p class="fixture-date">SAT 21 SEP 2026</p>
+                            <p class="fixture-teams">Mabopane JM FC vs Mike One Stars</p>
+                            <p class="fixture-meta">15:00 &middot; Mabopane Stadium</p>
+                        </li>
+
+                        <!-- ===== FIXTURE 2 - EDIT THIS ===== -->
+                        <li class="fixture-item">
+                            <p class="fixture-date">SUN 22 SEP 2026</p>
+                            <p class="fixture-teams">Maa Waa FC vs Winterveldt City Rocks</p>
+                            <p class="fixture-meta">15:00 &middot; Maa Waa Grounds</p>
+                        </li>
+
+                        <!-- ===== FIXTURE 3 - EDIT THIS ===== -->
+                        <li class="fixture-item">
+                            <p class="fixture-date">SAT 28 SEP 2026</p>
+                            <p class="fixture-teams">Team 3 vs Team 4</p>
+                            <p class="fixture-meta">14:30 &middot; Soshanguve Grounds</p>
+                        </li>
+
+                        <!-- ===== FIXTURE 4 - EDIT THIS ===== -->
+                        <li class="fixture-item">
+                            <p class="fixture-date">SUN 29 SEP 2026</p>
+                            <p class="fixture-teams">Team 5 vs Team 6</p>
+                            <p class="fixture-meta">15:00 &middot; Mabopane Stadium</p>
+                        </li>
+
+                        <!-- ===== FIXTURE 5 - EDIT THIS ===== -->
+                        <li class="fixture-item">
+                            <p class="fixture-date">SAT 05 OCT 2026</p>
+                            <p class="fixture-teams">Team 7 vs Team 8</p>
+                            <p class="fixture-meta">15:00 &middot; Winterveldt Grounds</p>
+                        </li>
+
+                        <!-- ===== ADD MORE FIXTURES ===== -->
+                        <!-- Copy one <li class="fixture-item"> block above and paste it here.
+                             Update the date, teams and venue. -->
+
+                    </ul>
+
+                </div>
+
+                                
+                <div class="column-right">
+
+                    <h2 class="section-heading">LEAGUE TABLE</h2>
+
+                    <!-- SEARCH BAR -->
+                    <input type="text" id="teamSearch" placeholder="🔍 Search for a team..." style="width: 100%; padding: 12px; margin-bottom: 15px; background-color: #0a0a0a; border: 1px solid #c9a961; color: #fff; border-radius: 4px;">
+
+                    <table class="league-table">
+                        
+
+                <!-- ============================================ -->
+                <!-- RIGHT COLUMN - LEAGUE TABLE                   -->
+                <!-- ============================================ -->
+                <div class="column-right">
+
+                    <h2 class="section-heading">LEAGUE TABLE</h2>
+
+                    <table class="league-table">
+
+                        <!-- ===== TABLE HEADER ===== -->
+                        <thead>
+                            <tr>
+                                <th class="center">Pos</th>
+                                <th>Team</th>
+                                <th class="center">P</th>
+                                <th class="center">W</th>
+                                <th class="center">D</th>
+                                <th class="center">L</th>
+                                <th class="center">Pts</th>
+                            </tr>
+                        </thead>
+
+                        <!-- ===== TABLE BODY - FILL IN YOUR TEAMS ===== -->
+                        <tbody>
+
+                            <!-- ROW 1 -->
+                            <tr>
+                                <td class="position">1</td>
+                                <td class="team-name">Mabopane JM FC</td>
+                                <td class="center">12</td>
+                                <td class="center">9</td>
+                                <td class="center">2</td>
+                                <td class="center">1</td>
+                                <td class="points">29</td>
+                            </tr>
+
+                            <!-- ROW 2 -->
+                            <tr>
+                                <td class="position">2</td>
+                                <td class="team-name">Mike One Stars</td>
+                                <td class="center">12</td>
+                                <td class="center">8</td>
+                                <td class="center">2</td>
+                                <td class="center">2</td>
+                                <td class="points">26</td>
+                            </tr>
+
+                            <!-- ROW 3 -->
+                            <tr>
+                                <td class="position">3</td>
+                                <td class="team-name">Maa Waa FC</td>
+                                <td class="center">12</td>
+                                <td class="center">6</td>
+                                <td class="center">4</td>
+                                <td class="center">2</td>
+                                <td class="points">22</td>
+                            </tr>
+
+                            <!-- ROW 4 -->
+                            <tr>
+                                <td class="position">4</td>
+                                <td class="team-name">Winterveldt City Rocks</td>
+                                <td class="center">12</td>
+                                <td class="center">5</td>
+                                <td class="center">4</td>
+                                <td class="center">3</td>
+                                <td class="points">19</td>
+                            </tr>
+
+                            <!-- ROW 5 -->
+                            <tr>
+                                <td class="position">5</td>
+                                <td class="team-name">Juventus FC</td>
+                                <td class="center">12</td>
+                                <td class="center">0</td>
+                                <td class="center">0</td>
+                                <td class="center">0</td>
+                                <td class="points">0</td>
+                            </tr>
+
+                            <!-- ROW 6 -->
+                            <tr>
+                                <td class="position">6</td>
+                                <td class="team-name">Stout School</td>
+                                <td class="center">12</td>
+                                <td class="center">0</td>
+                                <td class="center">0</td>
+                                <td class="center">0</td>
+                                <td class="points">0</td>
+                            </tr>
+
+                            <!-- ROW 7 -->
+                            <tr>
+                                <td class="position">7</td>
+                                <td class="team-name">Secure Care Fc</td>
+                                <td class="center">12</td>
+                                <td class="center">0</td>
+                                <td class="center">0</td>
+                                <td class="center">0</td>
+                                <td class="points">0</td>
+                            </tr>
+
+                            <!-- ROW 8 -->
+                            <tr>
+                                <td class="position">8</td>
+                                <td class="team-name">Giant Fc</td>
+                                <td class="center">12</td>
+                                <td class="center">0</td>
+                                <td class="center">0</td>
+                                <td class="center">0</td>
+                                <td class="points">0</td>
+                            </tr>
+
+                            <!-- ===== ADD MORE ROWS HERE ===== -->
+                            <!-- Copy any <tr>...</tr> block above and paste it below.
+                                 Update the position number in <td class="position">. -->
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <!-- Clearfix - stops parent collapsing around floated columns -->
+                <!-- REFERENCE: Week 6, Slide 21 (Clearing) -->
+                <div class="clearFix"></div>
+
+            </section>
+
+        </main>
+
+        <!-- ===================================================== -->
+        <!-- FOOTER                                                -->
+        <!-- ===================================================== -->
+        <footer>
+            <p>&copy; 2026 Mabopane Local Football Association | All Rights Reserved</p>
+        </footer>
+
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- SIGN IN MODAL POP-UP                                  -->
+    <!-- ===================================================== -->
+    <div id="signinModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Sign In / Subscribe</h2>
+            <p>Join the Mabopane LFA community to get the latest updates!</p>
+            
+            <form>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="Enter your email" required>
+                </div>
+                <button type="submit" class="submit-btn">SUBSCRIBE</button>
+            </form>
+        </div>
+    </div>
+
+      <!-- EXTERNAL JAVASCRIPT -->
+    <script src="Javascript/script.js"></script>
+</body>
+</html>

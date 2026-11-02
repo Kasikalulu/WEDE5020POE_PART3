@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO TAGS START HERE -->
+    <title>Our History | Mabopane Local Football Association</title>
+    <meta name="description" content="Explore the history of the South African football pyramid and the establishment of the Mabopane Local Football Association.">
+    <meta name="keywords" content="South African football pyramid, PSL, Mabopane LFA history, local football leagues">
+    <!-- SEO TAGS END HERE -->
+
+     
+
+    <!-- EXTERNAL CSS - lowercase "styles.css" -->
+    <!-- REFERENCE: Week 5, Slide 6-7 -->
+    <link href="CSS/Style.css" rel="stylesheet" type="text/css"/>
+
+    <!-- EMBEDDED CSS - page-specific styles -->
+    <!-- REFERENCE: Week 5, Slide 8-9 -->
+    <style>
+
+        /* ===== EMERGENCY RESET (backup) ===== */
+        /* REFERENCE: Week 6, Slide 3 (universal selector) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;         /* REFERENCE: Week 7, Slide 11 */
+        }
+
+        /* ===== BASE BODY ===== */
+        body {
+            font-family: Arial, Helvetica, sans-serif;  /* REFERENCE: Week 6, Slide 27 */
+            background-color: #0d0d0d;                  /* REFERENCE: Week 6, Slide 26 */
+            color: #ffffff;                             /* REFERENCE: Week 6, Slide 27 */
+            line-height: 1.6;                           /* REFERENCE: Week 6, Slide 27 */
+        }
+
+        /* ===== WRAPPER ===== */
+        #wrapper {
+            width: 100%;
+            max-width: 1200px;                          /* REFERENCE: Week 6, Slide 15 */
+            background-color: #111111;
+            margin: 0 auto;                             /* REFERENCE: Week 6, Slide 17 */
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background-color: #0a0a0a;
+            padding: 30px 20px 0;
+            text-align: center;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        /* Logo area - centred */
+        .logo-area {
+            padding-bottom: 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .main-logo {
+            display: block;
+            margin: 0 auto;                             /* Centred - REFERENCE: Week 6, Slide 17 */
+            width: 110px;
+            height: 110px;
+        }
+
+        /* "Mabopane" script name */
+        .site-name {
+            display: block;
+            text-align: center;
+            font-family: cursive;                       /* REFERENCE: Week 6, Slide 27 */
+            font-size: 3rem;
+            color: #ffffff;
+            letter-spacing: 3px;
+            margin-top: 5px;
+            width: 100%;
+        }
+
+        /* LFA divider with gold lines */
+        .lfa-divider {
+            display: block;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .lfa-divider .line {
+            display: inline-block;                      /* REFERENCE: Week 6, Slide 16 */
+            width: 60px;
+            height: 1px;
+            background-color: #c9a961;
+            vertical-align: middle;
+            margin: 0 12px;
+        }
+
+        .lfa-text {
+            display: inline-block;
+            color: #c9a961;
+            font-size: 0.9rem;
+            letter-spacing: 10px;
+            font-weight: bold;
+            vertical-align: middle;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav-row {
+            position: relative;                         /* REFERENCE: Week 6, Slide 19 */
+            border-top: 1px solid #2a2a2a;
+            padding: 22px 15px;
+            text-align: center;
+        }
+
+        
+
+        /* Sign-in link */
+        .signin-link {
+            position: absolute;                         /* REFERENCE: Week 6, Slide 19 */
+            right: 20px;
+            top: 20px;
+            color: #c9a961;
+            border: 1px solid #c9a961;
+            border-radius: 20px;                        /* REFERENCE: Week 6, Slide 25 */
+            padding: 8px 18px;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .signin-link:hover {
+            background-color: #c9a961;
+            color: #0a0a0a;
+        }
+
+        /* ===== PAGE HEADING ===== */
+        .page-heading {
+            text-align: center;
+            padding: 60px 20px 20px;
+        }
+
+        .page-heading h1 {
+            font-family: Georgia, 'Times New Roman', serif;  /* REFERENCE: Week 6, Slide 27 */
+            font-size: 2.5rem;
+            color: #ffffff;
+            letter-spacing: 3px;
+            font-weight: normal;
+            margin-bottom: 15px;
+        }
+
+        .heading-line {
+            display: inline-block;
+            width: 80px;
+            height: 2px;
+            background-color: #c9a961;
+        }
+
+        /* ===== HISTORY CONTENT ===== */
+        .history-content {
+            padding: 40px 60px 60px;
+            max-width: 900px;                           /* REFERENCE: Week 6, Slide 15 */
+            margin: 0 auto;
+        }
+
+        .history-content h2 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 1.5rem;
+            color: #c9a961;
+            letter-spacing: 2px;
+            text-align: center;
+            margin: 40px 0 20px;
+            font-weight: normal;
+        }
+
+        .history-content p {
+            color: #cccccc;
+            font-size: 1rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+
+        /* Highlighted intro block */
+        .history-highlight {
+            border-left: 3px solid #c9a961;             /* Gold accent - REFERENCE: Week 6, Slide 24 */
+            padding: 20px 25px;
+            background-color: #1a1a1a;                  /* REFERENCE: Week 6, Slide 26 */
+            border-radius: 4px;                         /* REFERENCE: Week 6, Slide 25 */
+            margin-bottom: 30px;
+        }
+
+        .history-highlight p {
+            font-size: 1rem;
+            color: #e6e6e6;
+            margin-bottom: 0;
+        }
+
+        /* Pyramid list styled as cards */
+        .pyramid-list {
+            list-style: none;                           /* REFERENCE: Week 6, Slide 16 */
+            padding: 0;
+            margin: 20px 0 30px;
+        }
+
+        .pyramid-list li {
+            background-color: #1a1a1a;
+            border-left: 3px solid #c9a961;
+            padding: 14px 20px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            color: #cccccc;
+            font-size: 0.95rem;
+        }
+
+        .pyramid-list li strong {
+            color: #c9a961;
+            margin-right: 8px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: #0a0a0a;
+            color: #b0b0b0;
+            text-align: center;
+            padding: 20px 15px;
+            border-top: 1px solid #c9a961;
+            font-size: 0.8rem;
+        }
+
+        /* ===== TABLET RESPONSIVE - 960px and below ===== */
+        /* REFERENCE: Week 7, Slide 12 (Media Query) */
+        @media only screen and (max-width: 960px) {
+            .site-name { font-size: 2.5rem; }
+            .signin-link {
+                position: static;                       /* REFERENCE: Week 6, Slide 19 */
+                display: inline-block;
+                margin-top: 10px;
+            }
+            nav ul li { padding: 0 12px; }
+            nav ul li a { font-size: 0.85rem; letter-spacing: 2px; }
+            .page-heading h1 { font-size: 2rem; }
+            .history-content { padding: 30px 30px 40px; }
+        }
+
+        /* ===== MOBILE RESPONSIVE - 480px and below ===== */
+        /* REFERENCE: Week 7, Slide 3 */
+        @media only screen and (max-width: 480px) {
+            .main-logo { width: 80px; height: 80px; }
+            .site-name { font-size: 2rem; }
+            .lfa-divider .line { width: 30px; }
+            .lfa-text { font-size: 0.75rem; letter-spacing: 6px; }
+            nav ul li {
+                display: block;                         /* Stack vertically - REFERENCE: Week 6, Slide 16 */
+                padding: 10px 0;
+                border-bottom: 1px solid #2a2a2a;
+            }
+            nav ul li:last-child { border-bottom: none; }
+            nav ul li a { font-size: 0.9rem; letter-spacing: 2px; }
+            .page-heading h1 { font-size: 1.5rem; }
+            .history-content { padding: 25px 20px 30px; }
+            .history-content h2 { font-size: 1.2rem; }
+            .history-content p { font-size: 0.9rem; }
+            .pyramid-list li { font-size: 0.85rem; padding: 12px 15px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- ===================================================== -->
+        <!-- HEADER - identical to every other page                -->
+        <!-- ===================================================== -->
+        <header>
+    <div class="logo-area">
+        <img src="images/Logo.png" alt="Mabopane LFA Crown Logo" class="main-logo">
+        <h1 class="site-name">Mabopane</h1>
+        <div class="lfa-divider">
+            <span class="line"></span>
+            <span class="lfa-text">L F A</span>
+            <span class="line"></span>
+        </div>
+    </div>
+
+    <div class="nav-row">
+        <nav>
+            <ul>
+                
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="gallery.html">GALLERY</a></li>
+                <li><a href="about.html">ABOUT US</a></li>
+                <li><a href="leaguetable.html">LOG TABLE & FIXTURES</a></li>
+                <li><a href="history.html">HISTORY</a></li>
+                <li><a href="enquiry.html">ENQUIRY</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+        
+        
+        
+    </div>
+</header>
+
+        
+        <!-- MAIN CONTENT                                          -->
+        
+        <main>
+
+            <!-- Page heading -->
+            <section class="page-heading">
+                <h1>HISTORY</h1>
+                <div class="heading-line"></div>
+            </section>
+
+            <!-- History content -->
+            <section class="history-content">
+
+                <h2>ORGANIZATION OVERVIEW</h2>
+
+                <!-- Highlighted intro -->
+                <div class="history-highlight">
+                    <p>
+                        <strong>Name of Organization:</strong> Mabopane Local Football Association
+                    </p>
+                </div>
+
+                <p>
+                    Bafana Bafana participated only for the second time ever in the FIFA 
+                    World Cup in this year's iteration, the FIFA World Cup 2026. It is a 
+                    disappointing fact considering the South African Premier Soccer League 
+                    (PSL) is ranked in the top five African Premier Leagues and has been a 
+                    top league in Africa for decades now.
+                </p>
+
+                <p>
+                    According to Football Stage (n.d.), the South African football pyramid 
+                    is the structure that produces, maintains, and sets the standard of 
+                    football in South Africa. It is an ecosystem that, if used effectively, 
+                    can help establish South African football as a leader on the continent 
+                    and a prominent player globally.
+                </p>
+
+                <h2>THE FOOTBALL PYRAMID</h2>
+
+                <p>
+                    There are four promotional divisions below the Premier Soccer League 
+                    (PSL) in descending order:
+                </p>
+
+                <!-- Pyramid list -->
+                <ul class="pyramid-list">
+                    <li>
+                        <strong>1.</strong> First Division &mdash; formerly the National First Division (NFD), now the Motsepe Foundation Championship
+                    </li>
+                    <li>
+                        <strong>2.</strong> Second Division &mdash; formerly Vodacom, now ABC Motsepe
+                    </li>
+                    <li>
+                        <strong>3.</strong> Third Division &mdash; formerly Castle, now the South African Breweries League
+                    </li>
+                    <li>
+                        <strong>4.</strong> Fourth Division &mdash; now called Local Football Leagues (LFA)
+                    </li>
+                </ul>
+
+                <p>
+                    The Local Football Associations are managed by regional football 
+                    associations spread across the nine different provinces. The Mabopane 
+                    Football Association falls under the Gauteng Regional Football Association.
+                </p>
+
+            </section>
+
+        </main>
+
+       
+        <!-- FOOTER                                                -->
+       
+        <footer>
+            <p>&copy; 2026 Mabopane Local Football Association | All Rights Reserved</p>
+        </footer>
+
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- SIGN IN MODAL POP-UP                                  -->
+    <!-- ===================================================== -->
+    <div id="signinModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Sign In / Subscribe</h2>
+            <p>Join the Mabopane LFA community to get the latest updates!</p>
+            
+            <form>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="Enter your email" required>
+                </div>
+                <button type="submit" class="submit-btn">SUBSCRIBE</button>
+            </form>
+        </div>
+    </div>
+
+        <!-- EXTERNAL JAVASCRIPT -->
+    <script src="Javascript/script.js"></script>
+</body>
+</html>

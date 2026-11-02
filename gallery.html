@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO TAGS START HERE -->
+    <title> Gallery | Mabopane Local Football Association</title>
+    <meta name="description" content="Browse photos from Mabopane LFA matches, tournaments, and community events. Relive the best moments of grassroots football.">
+    <meta name="keywords" content="Mabopane LFA photos, football gallery, soccer pictures, Bafana Bafana 1996">
+    <!-- SEO TAGS END HERE -->
+
+    
+
+    <!-- EXTERNAL CSS -->
+    <!-- REFERENCE: Week 5, Slide 6-7 - <link> tag connects page to styles.css -->
+    <link href="CSS/Style.css" rel="stylesheet" type="text/css"/>
+
+    <!-- EMBEDDED CSS -->
+    <!-- REFERENCE: Week 5, Slide 8-9 - CSS inside <style> tags in <head> -->
+    <style>
+
+        
+        /* EMERGENCY RESET (backup)                                  */
+        /* REFERENCE: Week 6, Slide 3 (universal selector)          */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;         /* REFERENCE: Week 7, Slide 11 */
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;  /* REFERENCE: Week 6, Slide 27 */
+            background-color: #0d0d0d;                  /* REFERENCE: Week 6, Slide 26 */
+            color: #ffffff;                             /* REFERENCE: Week 6, Slide 27 */
+            line-height: 1.6;                           /* REFERENCE: Week 6, Slide 27 */
+        }
+
+        /* Main container - centred on screen */
+        /* REFERENCE: Week 6, Slide 17 (margin: auto) */
+        #wrapper {
+            width: 100%;
+            max-width: 1200px;                          /* REFERENCE: Week 6, Slide 15 */
+            background-color: #111111;                  /* REFERENCE: Week 6, Slide 26 */
+            margin: 0 auto;                             /* Centred - REFERENCE: Week 6, Slide 17 */
+        }
+
+        
+        /* HEADER                                                    */
+        /* REFERENCE: Week 6, Slide 12 (block-level <header>)       */
+        
+        header {
+            background-color: #0a0a0a;                  /* REFERENCE: Week 6, Slide 26 */
+            padding: 30px 20px 0;                       /* REFERENCE: Week 6, Slide 18 */
+            text-align: center;                         /* REFERENCE: Week 6, Slide 27 */
+            border-bottom: 1px solid #2a2a2a;           /* REFERENCE: Week 6, Slide 24 */
+        }
+
+        .logo-area {
+            padding-bottom: 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .main-logo {
+            display: block;
+            margin: 0 auto;                             /* Centred - REFERENCE: Week 6, Slide 17 */
+            width: 110px;
+            height: 110px;
+        }
+
+        .site-name {
+            display: block;
+            text-align: center;
+            font-family: cursive;                       /* REFERENCE: Week 6, Slide 27 */
+            font-size: 3rem;
+            color: #ffffff;
+            letter-spacing: 3px;
+            margin-top: 5px;
+            width: 100%;
+        }
+
+        .lfa-divider {
+            display: block;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .lfa-divider .line {
+            display: inline-block;
+            width: 60px;
+            height: 1px;
+            background-color: #c9a961;
+            vertical-align: middle;
+            margin: 0 12px;
+        }
+
+        .lfa-text {
+            display: inline-block;
+            color: #c9a961;
+            font-size: 0.9rem;
+            letter-spacing: 10px;
+            font-weight: bold;
+            vertical-align: middle;
+        }
+
+        .nav-row {
+            position: relative;                         /* Parent for signin-link - REFERENCE: Week 6, Slide 19 */
+            border-top: 1px solid #2a2a2a;
+            padding: 22px 15px;
+            text-align: center;
+        }
+
+       
+
+        .signin-link {
+            position: absolute;                         /* REFERENCE: Week 6, Slide 19 */
+            right: 20px;
+            top: 20px;
+            color: #c9a961;
+            border: 1px solid #c9a961;
+            border-radius: 20px;                        /* REFERENCE: Week 6, Slide 25 */
+            padding: 8px 18px;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .signin-link:hover {
+            background-color: #c9a961;
+            color: #0a0a0a;
+        }
+
+        
+        /* PAGE HEADING                                              */
+        
+        .page-heading {
+            text-align: center;
+            padding: 50px 20px 20px;
+        }
+
+        .page-heading h1 {
+            font-family: Georgia, 'Times New Roman', serif;  /* REFERENCE: Week 6, Slide 27 */
+            font-size: 2.5rem;
+            color: #ffffff;
+            letter-spacing: 3px;
+            font-weight: normal;
+            margin-bottom: 10px;
+        }
+
+        .page-heading p {
+            color: #cccccc;
+            font-size: 0.95rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        
+        /* GALLERY GRID - 3 IMAGES PER ROW                           */
+        
+        /* Each row fits 3 items:                                     */
+        /* 3 × 31% (width) + 2 × 3.5% (gap) = 93% + 7% = 100%        */
+        /*                                                           */
+        /* REFERENCE:                                                */
+        /* Week 6, Slide 20: "Float" - float: left places boxes      */
+        /* side by side.                                             */
+        /* Week 7, Slide 14: "Div tag layout columns are expressed   */
+        /* in % (percentages)."                                      */
+        
+
+        .gallery-section {
+            padding: 20px 40px 50px;
+            overflow: hidden;                           /* Contains floated items - REFERENCE: Week 6, Slide 22 */
+        }
+
+        .gallery-item {
+            float: left;                                /* Side-by-side - REFERENCE: Week 6, Slide 20 */
+            width: 31%;                                 /* 3 per row - REFERENCE: Week 7, Slide 14 */
+            margin-right: 3.5%;                         /* Gap between items - REFERENCE: Week 6, Slide 17 */
+            margin-bottom: 30px;
+            background-color: #1a1a1a;                  /* Card background - REFERENCE: Week 6, Slide 26 */
+            border: 1px solid #2a2a2a;                  /* Card border - REFERENCE: Week 6, Slide 24 */
+            border-radius: 6px;                         /* Rounded corners - REFERENCE: Week 6, Slide 25 */
+            padding: 12px;                              /* Space between border & image - REFERENCE: Week 6, Slide 18 */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Soft shadow - REFERENCE: WEDE5020POE.pdf Part 2, Section 2.5 */
+        }
+
+        /* Last item in each row - no right margin so it sits flush */
+        .gallery-item-last {
+            margin-right: 0;
+        }
+
+        .gallery-item img {
+            width: 100%;                                /* Fills item box - REFERENCE: Week 7, Slide 8 */
+            height: auto;                               /* Keeps aspect ratio - REFERENCE: Week 7, Slide 8 */
+            display: block;                             /* Removes gap under image - REFERENCE: Week 6, Slide 16 */
+            border: 2px solid #c9a961;                  /* Gold outline - REFERENCE: Week 6, Slide 24 */
+            border-radius: 4px;                         /* Slight rounding - REFERENCE: Week 6, Slide 25 */
+        }
+
+        .gallery-caption {
+            text-align: center;                         /* Centred - REFERENCE: Week 6, Slide 27 */
+            color: #cccccc;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            padding-top: 12px;
+            padding-bottom: 5px;
+        }
+
+        /* Clearfix - stops parent collapsing around floated items */
+        /* REFERENCE: Week 6, Slide 21 (Clearing) */
+        .clearFix {
+            clear: both;
+        }
+
+        
+        /* FOOTER                                                    */
+        
+        footer {
+            background-color: #0a0a0a;
+            color: #b0b0b0;
+            text-align: center;
+            padding: 20px 15px;
+            border-top: 1px solid #c9a961;
+            font-size: 0.8rem;
+        }
+
+        
+        /* TABLET RESPONSIVE - 960px and below                       */
+        /* REFERENCE: Week 7, Slide 12 (Media Query)                */
+        
+        @media only screen and (max-width: 960px) {
+
+            .site-name { font-size: 2.5rem; }
+
+            .signin-link {
+                position: static;
+                display: inline-block;
+                margin-top: 10px;
+            }
+
+            /* Gallery becomes 2 per row */
+            /* 2 × 48% + 1 × 4% = 100% */
+            .gallery-item {
+                width: 48%;
+                margin-right: 4%;
+            }
+
+            .gallery-item-last { margin-right: 0; }
+
+            /* Force every 2nd item to have no right margin */
+            .gallery-item:nth-child(2n) { margin-right: 0; }
+
+            .page-heading h1 { font-size: 2rem; }
+        }
+
+       
+        /* MOBILE RESPONSIVE - 480px and below                       */
+        /* REFERENCE: Week 7, Slide 3 (Mobile view)                  */
+        
+        @media only screen and (max-width: 480px) {
+
+            .main-logo { width: 80px; height: 80px; }
+            .site-name { font-size: 2rem; }
+            .lfa-divider .line { width: 30px; }
+            .lfa-text { font-size: 0.75rem; letter-spacing: 6px; }
+
+            nav ul li {
+                display: block;                         
+                padding: 10px 0;
+                border-bottom: 1px solid #2a2a2a;
+            }
+
+            nav ul li:last-child { border-bottom: none; }
+
+            /* Gallery items stack - one per row */
+            .gallery-item {
+                width: 100%;                            
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .gallery-section { padding: 15px 20px 40px; }
+            .page-heading { padding: 30px 15px 15px; }
+            .page-heading h1 { font-size: 1.5rem; }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        
+        
+        
+    
+
+    <header>
+    <div class="logo-area">
+        <img src="images/Logo.png" alt="Mabopane LFA Crown Logo" class="main-logo">
+        <h1 class="site-name">Mabopane</h1>
+        <div class="lfa-divider">
+            <span class="line"></span>
+            <span class="lfa-text">L F A</span>
+            <span class="line"></span>
+        </div>
+    </div>
+
+    <div class="nav-row">
+        <nav>
+            <ul>
+                <li><a href="index.html"        class="currentPage">HOME</a></li>
+                <li><a href="gallery.html">GALLERY</a></li>
+                <li><a href="about.html">ABOUT US</a></li>
+                <li><a href="leaguetable.html">LOG TABLE & FIXTURES</a></li>
+                <li><a href="history.html">HISTORY</a></li>
+                <li><a href="enquiry.html">ENQUIRY</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+        
+    </div>
+
+    </header>
+
+        
+        <!-- MAIN CONTENT - GALLERY                                -->
+       
+        <main>
+
+            <!-- Page heading -->
+            <section class="page-heading">
+                <h1>GALLERY</h1>
+                <p>Relive the moments, the goals, the passion. Browse through our photo gallery.</p>
+            </section>
+
+            <!-- Gallery grid -->
+            <section class="gallery-section">
+
+              
+                <!-- ROW 1 - IMAGES 1, 2, 3                        -->
+                
+
+                
+
+                <!-- IMAGE 1 -->
+                <div class="gallery-item">
+                    <img src="images/1996Bafanabafana.jpg" alt="1996 Bafana Bafana team photo">
+                    <p class="gallery-caption">1996 Bafana Bafana, one of Saouth africas greatest sporting achievements, 
+                        that inspired the current south african footballing pyramid</p>
+                </div>
+
+                <!-- IMAGE 2 -->
+                <div class="gallery-item">
+                    <img src="images/Mabopane%20LFA.jpg" alt="Mabopane LFA match action photo">
+                    <p class="gallery-caption">Mabopane LFA Winners prize</p>
+                </div>
+
+                <!-- IMAGE 3 - last in row, add "gallery-item-last" -->
+                <div class="gallery-item gallery-item-last">
+                    <img src="images/Mabopane%20LFA02.jpg" alt="Mabopane LFA team celebrating">
+                    <p class="gallery-caption">Mabopane LFA Price money</p>
+                </div>
+
+                <div class="clearFix"></div>
+
+                
+                <!-- ROW 2 - IMAGES 4, 5, 6                        -->
+                
+
+                <!-- IMAGE 4 - REPLACE src and alt with your image -->
+                <div class="gallery-item">
+                    <img src="Images/MALFA_promotion 25-26.jpg" alt="">
+                    <p class="gallery-caption">25/26 Mab LFA league winning team</p>
+                </div>
+
+                <!-- IMAGE 5 - REPLACE src and alt with your image -->
+                <div class="gallery-item">
+                    <img src="Images/Captain.jpg" alt="Description of your image 5">
+                    <p class="gallery-caption">25/26 Golden birds captain</p>
+                </div>
+
+                <!-- IMAGE 6 - last in row, add "gallery-item-last" -->
+                <div class="gallery-item gallery-item-last">
+                    <img src="images/MABLFA_Cup_tournament.jpg" alt="Description of your image 6">
+                    <p class="gallery-caption">MABLFA Cup tournament advert</p>
+                </div>
+
+                <div class="clearFix"></div>
+
+                
+                <!-- ROW 3 - IMAGES 7, 8, 9                        -->
+                
+
+                <!-- IMAGE 7 - REPLACE src and alt with your image -->
+                <div class="gallery-item">
+                    <img src="images/Kit reward.jpg" alt="Description of your image 7">
+                    <p class="gallery-caption">Winnig team rewarded with new kit</p>
+                </div>
+
+                <!-- IMAGE 8 - REPLACE src and alt with your image -->
+                <div class="gallery-item">
+                    <img src="images/Juventus_Fc_Match_action.jpg" alt="Description of your image 8">
+                    <p class="gallery-caption">Juventus Fc league match action</p>
+                </div>
+
+                <!-- IMAGE 9 - last in row, add "gallery-item-last" -->
+                <div class="gallery-item gallery-item-last">
+                    <img src="images/MAbLFA fans.jpg" alt="Description of your image 9">
+                    <p class="gallery-caption">Fans readying up for the game</p>
+                </div>
+
+                <div class="clearFix"></div>
+
+                
+                <!-- ADD MORE IMAGES BELOW                         -->
+                
+                <!-- Copy the .gallery-item block and paste it.    -->
+                <!-- Add "gallery-item-last" to every 3rd item.    -->
+                <!-- Place a <div class="clearFix"></div> after    -->
+                <!-- every 3 items to close off each row.          -->
+
+            </section>
+
+        </main>
+
+       
+        <!-- FOOTER                                                -->
+        
+        <footer>
+            <p>&copy; 2026 Mabopane Local Football Association | All Rights Reserved</p>
+        </footer>
+
+    </div>
+        <!-- ===================================================== -->
+    <!-- SIGN IN MODAL POP-UP                                  -->
+    <!-- ===================================================== -->
+    <div id="signinModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Sign In / Subscribe</h2>
+            <p>Join the Mabopane LFA community to get the latest updates!</p>
+            
+            <form>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="Enter your email" required>
+                </div>
+                <button type="submit" class="submit-btn">SUBSCRIBE</button>
+            </form>
+        </div>
+    </div>
+
+        <!-- ===================================================== -->
+    <!-- LIGHTBOX POP-UP                                       -->
+    <!-- ===================================================== -->
+    <div id="lightbox" class="lightbox-modal">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" class="lightbox-content" src="" alt="Enlarged Image">
+    </div>
+
+    
+
+       <!-- EXTERNAL JAVASCRIPT -->
+    <script src="Javascript/script.js"></script>
+</body>
+</html>
+
